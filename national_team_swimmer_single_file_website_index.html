@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🏊‍♀️ National Team Swimmer | Official Site</title>
+  <meta name="description" content="Official website for a National Team swimmer: bio, results, schedule, media, sponsors, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c1220; /* deep navy */
+      --card:#101a31;
+      --text:#eaf2ff;
+      --muted:#9db4d5;
+      --accent:#49c6ff; /* water blue */
+      --accent-2:#64ffda; /* teal */
+      --chip:#1a2544;
+      --ring: rgba(73,198,255,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 1200px at 80% -10%, rgba(100,255,218,.08), transparent 60%), radial-gradient(1000px 800px at -10% 20%, rgba(73,198,255,.10), transparent 60%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .circle{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;box-shadow:0 0 0 6px var(--ring)}
+    .logo strong{font-weight:800;letter-spacing:.4px}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.08)}
+    nav a:hover{background:rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:26px 0}
+    .hero .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+    h1{font-size:clamp(28px,4vw,46px);margin:0 0 10px}
+    .lead{font-size:clamp(15px,1.8vw,18px);color:var(--muted);line-height:1.6;margin:12px 0 18px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--chip);border:1px solid rgba(255,255,255,.08);font-size:13px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg, rgba(100,255,218,.18), rgba(100,255,218,.08));backdrop-filter:blur(4px);font-weight:600}
+    .btn.secondary{background:transparent}
+    .hero .photo{position:relative}
+    .frame{border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+    .frame img{display:block;width:100%;height:auto}
+    .watermark{position:absolute;bottom:-8px;left:-8px;background:var(--card);border:1px solid rgba(255,255,255,.08);padding:10px 14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.4);font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    section{padding:26px 0}
+    h2{font-size:clamp(22px,2.6vw,30px);margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{background:var(--card);border-radius:20px;border:1px solid rgba(255,255,255,.08);padding:20px}
+
+    /* Bio + Achievements */
+    .bio{grid-column:span 7}
+    .achievements{grid-column:span 5}
+    ul.clean{list-style:none;padding-left:0;margin:8px 0}
+    ul.clean li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+    ul.clean li:last-child{border-bottom:none}
+
+    /* PBs table */
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th, td{padding:10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+    th{color:var(--muted);font-weight:600}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(73,198,255,.15);border:1px solid rgba(73,198,255,.35)}
+
+    /* Schedule */
+    .schedule .row{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+
+    /* Media Gallery */
+    .media{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .media a{display:block;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+    .media img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s ease}
+    .media a:hover img{transform:scale(1.05)}
+
+    /* Sponsors & Contact */
+    .sponsors{display:flex;gap:14px;flex-wrap:wrap}
+    .sponsor{padding:10px 14px;border-radius:12px;background:var(--chip);border:1px solid rgba(255,255,255,.08)}
+
+    footer{opacity:.8;padding:24px 0 40px;font-size:13px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .bio{grid-column:span 12}
+      .achievements{grid-column:span 12}
+      .media{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 560px){
+      nav{display:none}
+      .media{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <div class="circle" aria-hidden="true">🏊‍♀️</div>
+        <div>
+          <strong>First Last</strong><br>
+          <small style="color:var(--muted)">National Team | Freestyle • Butterfly</small>
+        </div>
+      </div>
+      <nav>
+        <a href="#bio">About</a>
+        <a href="#pbs">Personal Bests</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#media">Media</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Chasing Blue Lines. Setting New Marks.</h1>
+        <p class="lead">I’m <strong>First Last</strong>, a <em>National Team</em> swimmer specializing in 100/200 Free and 100 Fly. Olympian-in-progress, student of the sport, and advocate for water safety and access.</p>
+        <div class="badges">
+          <span class="chip">National Team 🇺🇸</span>
+          <span class="chip">Worlds Qualifier</span>
+          <span class="chip">NCAA All‑American</span>
+        </div>
+        <div class="cta">
+          <a class="btn" href="#pbs">View Personal Bests</a>
+          <a class="btn secondary" href="#media">Watch Highlights</a>
+        </div>
+      </div>
+      <div class="photo">
+        <div class="frame">
+          <!-- Replace with your optimized hero image -->
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15cf70489?q=80&w=1400&auto=format&fit=crop" alt="Swimmer slicing through the water in a race">
+        </div>
+        <div class="watermark">Photo: Team Photographer • City, Year</div>
+      </div>
+    </section>
+
+    <section id="bio">
+      <div class="grid">
+        <div class="card bio">
+          <h2>About</h2>
+          <p>Born and raised in <strong>Hometown</strong>, I found the pool at age 7 and never looked back. Today I train with <strong>Club/University</strong> under <strong>Coach Name</strong>, focusing on sprint free and fly. Outside the pool, I study <strong>Major/Interest</strong> and work with <strong>Nonprofit/Initiative</strong> to expand access to swim lessons in underserved communities.</p>
+          <ul class="clean">
+            <li><strong>Height:</strong> 6'2" • <strong>Wingspan:</strong> 6'6" • <strong>Dominant stroke:</strong> Free/Fly</li>
+            <li><strong>Teams:</strong> National Team (2024‑present), Club/College Team (2022‑present)</li>
+            <li><strong>Coach:</strong> Coach Name • <strong>Agent:</strong> Agent Name, Agency</li>
+            <li><strong>Community:</strong> Water safety ambassador • Clinics, speaking, and meet‑and‑greets</li>
+          </ul>
+        </div>
+        <div class="card achievements">
+          <h2>Highlights</h2>
+          <ul class="clean">
+            <li>🏅 <strong>World Championships Finalist</strong> – 100 Free (2024)</li>
+            <li>🇺🇸 <strong>National Team</strong> – Selected 2024, 2025</li>
+            <li>🏆 <strong>NCAA Champion</strong> – 400 Free Relay (2025)</li>
+            <li>📈 <strong>American Top‑10</strong> – 100 Free (LCM), 2025</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="pbs">
+      <div class="card">
+        <h2>Personal Bests</h2>
+        <p class="lead">Long Course (50m) and Short Course (25y). Toggle to filter.</p>
+        <div style="margin:10px 0 16px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn" data-filter="all">All</button>
+          <button class="btn secondary" data-filter="LCM">LCM</button>
+          <button class="btn secondary" data-filter="SCY">SCY</button>
+        </div>
+        <div class="table-wrap">
+          <table id="pb-table" aria-label="Personal best times">
+            <thead>
+              <tr><th>Event</th><th>Time</th><th>Pool</th><th>Meet</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr data-pool="LCM"><td>50 Free</td><td><strong>24.65</strong></td><td><span class="tag">LCM</span></td><td>US Trials</td><td>2025‑06‑21</td></tr>
+              <tr data-pool="LCM"><td>100 Free</td><td><strong>53.70</strong></td><td><span class="tag">LCM</span></td><td>Pan Ams</td><td>2024‑10‑14</td></tr>
+              <tr data-pool="LCM"><td>100 Fly</td><td><strong>58.90</strong></td><td><span class="tag">LCM</span></td><td>Worlds</td><td>2025‑02‑10</td></tr>
+              <tr data-pool="SCY"><td>50 Free</td><td><strong>21.65</strong></td><td><span class="tag">SCY</span></td><td>NCAAs</td><td>2025‑03‑22</td></tr>
+              <tr data-pool="SCY"><td>100 Free</td><td><strong>47.90</strong></td><td><span class="tag">SCY</span></td><td>Conference</td><td>2025‑02‑18</td></tr>
+              <tr data-pool="SCY"><td>100 Fly</td><td><strong>51.30</strong></td><td><span class="tag">SCY</span></td><td>Invitational</td><td>2024‑12‑07</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="card schedule">
+        <h2>Upcoming Schedule</h2>
+        <div class="row"><div>
+          <strong>US Open</strong><br><span class="muted">Greensboro, NC • Dec 4–7, 2025</span>
+        </div>
+        <div><a href="#" class="btn secondary">Tickets</a></div></div>
+        <div class="row"><div>
+          <strong>Worlds Trials</strong><br><span class="muted">Indianapolis, IN • June 18–22, 2026</span>
+        </div>
+        <div><a href="#" class="btn secondary">Meet Info</a></div></div>
+        <div class="row"><div>
+          <strong>Summer Nationals</strong><br><span class="muted">Irvine, CA • July 29–Aug 2, 2026</span>
+        </div>
+        <div><a href="#" class="btn secondary">Psych Sheet</a></div></div>
+      </div>
+    </section>
+
+    <section id="media">
+      <div class="card">
+        <h2>Media</h2>
+        <div class="media">
+          <a href="#" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1544551763-7ef03864b0a0?q=80&w=1200&auto=format&fit=crop" alt="Victory at the wall"></a>
+          <a href="#" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1546500840-ae38253aba9b?q=80&w=1200&auto=format&fit=crop" alt="Training underwater"></a>
+          <a href="#" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1544798723-352d25ca82cd?q=80&w=1200&auto=format&fit=crop" alt="Relay exchange"></a>
+        </div>
+        <p style="margin-top:12px;color:var(--muted)">Add YouTube race videos, Instagram posts, or press features here.</p>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="grid">
+        <div class="card" style="grid-column:span 7">
+          <h2>Sponsors & Partnerships</h2>
+          <p class="lead">Proudly supported by brands that believe in performance, character, and community.</p>
+          <div class="sponsors">
+            <span class="sponsor">Brand One</span>
+            <span class="sponsor">Brand Two</span>
+            <span class="sponsor">Local Partner</span>
+          </div>
+          <p style="margin-top:10px;color:var(--muted)">Interested in partnering? See the media kit and contact below.</p>
+        </div>
+        <div class="card" style="grid-column:span 5">
+          <h2>Downloads</h2>
+          <ul class="clean">
+            <li>📄 <a href="#">Media Kit (PDF)</a></li>
+            <li>🖼️ <a href="#">Press Photos (ZIP)</a></li>
+            <li>🗒️ <a href="#">Full Results & Stats (CSV)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="lead">For appearances, clinics, and partnerships:</p>
+        <ul class="clean">
+          <li><strong>Agent:</strong> <a href="mailto:agent@example.com">agent@example.com</a> • (555) 123‑4567</li>
+          <li><strong>Speaking/Clinics:</strong> <a href="mailto:events@example.com">events@example.com</a></li>
+          <li><strong>Social:</strong> <a href="#">Instagram</a> • <a href="#">YouTube</a> • <a href="#">X/Twitter</a>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> First Last • All rights reserved • Built with ❤️ and GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Year footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // PB filter
+    const buttons = document.querySelectorAll('[data-filter]');
+    const rows = document.querySelectorAll('#pb-table tbody tr');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const pool = btn.getAttribute('data-filter');
+      buttons.forEach(b=>b.classList.toggle('secondary', b!==btn));
+      rows.forEach(r => {
+        r.style.display = (pool==='all' || r.dataset.pool===pool) ? '' : 'none';
+      });
+    }));
+  </script>
+</body>
+</html>
